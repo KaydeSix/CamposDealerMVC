@@ -38,6 +38,7 @@ namespace CamposDealerMVC.Business.Venda
 
                 ViewVendaModel Venda = new ViewVendaModel
                 {
+                    IdVenda = item.IdVenda,
                     IdProduto = item.IdProduto,
                     IdCliente = item.IdCliente,
                     VlrTotalVenda = item.VlrTotalVenda,
@@ -60,6 +61,8 @@ namespace CamposDealerMVC.Business.Venda
         {
             try
             {
+                venda.VlrTotalVenda = venda.VlrUnitarioVenda * venda.QtdVenda;
+
                 _vendaRepositorio.ConfirmaAlterarVenda(venda);
             }
             catch (Exception ex)

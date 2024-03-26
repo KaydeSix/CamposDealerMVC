@@ -48,6 +48,9 @@ namespace CamposDealerMVC.Repositorio.Cliente
             _bancoContext.CLIENTE.Remove(clienteBanco);
             _bancoContext.SaveChanges();
         }
-        
+        public VendaModel BuscaVendaByIdCliente(int IdCliente)
+        {
+            return _bancoContext.VENDA.FirstOrDefault(x => x.IdCliente == IdCliente);
+        }
     }
 }

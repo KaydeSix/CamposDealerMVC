@@ -9,6 +9,8 @@
 <form asp-controller="Venda" asp-action="ConfirmaAlterarVenda" method="post">
 
     <input type="hidden" asp-for="IdVenda">
+    <input type="hidden" asp-for="IdCliente">
+    <input type="hidden" asp-for="IdProduto">
     <div class="mb-3">
         <label for="QtdVenda" class="form-label">Quantidade de Produtos</label>
         <input type="number" required asp-for="QtdVenda" class="form-control" id="" placeholder="Digite a quantidade de produtos">

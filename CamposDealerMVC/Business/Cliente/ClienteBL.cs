@@ -49,6 +49,13 @@ namespace CamposDealerMVC.Business.Cliente
         {
             try
             {
+                VendaModel venda = _clienteRepositorio.BuscaVendaByIdCliente(IdCliente);
+
+                if (venda.IdVenda > 0)
+                {
+                    return new ResultadoModel { Sucesso = false, Mensagem = $"Esse Cliente não pode ser removido por pertencer a uma venda! Por favor verifique a tela de vendas." };
+                }
+
                 _clienteRepositorio.ApagarCliente(IdCliente);
             }
             catch (Exception ex)

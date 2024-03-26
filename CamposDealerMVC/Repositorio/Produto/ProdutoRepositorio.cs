@@ -25,6 +25,10 @@ namespace CamposDealerMVC.Repositorio.Produto
         {
             return _bancoContext.PRODUTO.FirstOrDefault(x => x.IdProduto == IdProduto);
         }
+        public VendaModel BuscaVendaByIdProduto(int IdProduto)
+        {
+            return _bancoContext.VENDA.FirstOrDefault(x => x.IdProduto == IdProduto);
+        }
 
         public void ConfirmaAlterarProduto(ProdutoModel produto)
         {

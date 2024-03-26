@@ -50,6 +50,12 @@ namespace CamposDealerMVC.Business.Produto
         {
             try
             {
+                VendaModel venda = _produtoRepositorio.BuscaVendaByIdProduto(IdProduto);
+
+                if (venda.IdVenda > 0)
+                {
+                    return new ResultadoModel { Sucesso = false, Mensagem = $"Esse Produto não pode ser removido por pertencer a uma venda! Por favor verifique a tela de vendas." };
+                }
                 _produtoRepositorio.ApagarProduto(IdProduto);
             }
             catch (Exception ex)
