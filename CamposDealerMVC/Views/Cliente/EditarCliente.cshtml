@@ -1,0 +1,28 @@
+﻿@model ClienteModel
+@{
+    ViewData["Title"] = "Editor de Clientes";
+}
+<div class="text-center">
+    <h1>Editor de Cliente</h1>
+</div>
+
+<form asp-controller="Cliente" asp-action="ConfirmaAlterarCliente" method="post">
+
+    <input type="hidden" asp-for="IdCliente">
+    <div class="mb-3">
+        <label for="Nome" class="form-label">Nome</label>
+        <input type="text" required asp-for="Nome" class="form-control" id="inputNomeCliente" placeholder="Digite o nome completo">
+    </div>
+    <div class="mb-3">
+        <label for="Email" class="form-label">Email</label>
+        <input type="email" required asp-for="Email" class="form-control" id="inputEmailCliente" placeholder="Digite o Email">
+    </div>
+    <div class="mb-3">
+        <label for="Cidade" class="form-label">Cidade</label>
+        <input type="text" required asp-for="Cidade" class="form-control" id="inputCidadeCliente" placeholder="Digite a cidade onde vive">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Confirmar Alterações</button>
+    <a class="btn btn-secondary" role="button" asp-controller="Cliente" asp-action="Cliente">Voltar</a>
+
+</form>

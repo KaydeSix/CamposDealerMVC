@@ -1,0 +1,28 @@
+﻿@model VendaModel
+@{
+    ViewData["Title"] = "Editor de Vendas";
+}
+<div class="text-center">
+    <h1>Editor de Vendas</h1>
+</div>
+
+<form asp-controller="Venda" asp-action="ConfirmaAlterarVenda" method="post">
+
+    <input type="hidden" asp-for="IdVenda">
+    <div class="mb-3">
+        <label for="QtdVenda" class="form-label">Quantidade de Produtos</label>
+        <input type="number" required asp-for="QtdVenda" class="form-control" id="" placeholder="Digite a quantidade de produtos">
+    </div>
+    <div class="mb-3">
+        <label for="VlrUnitario" class="form-label">Valor Unitário do Produto</label>
+        <input type="number" required asp-for="VlrUnitarioVenda" class="form-control" id="" placeholder="Digite o valor unitario dos produtos">
+    </div>
+    <div class="mb-3">
+        <label for="DtVenda" class="form-label">Data da Venda</label>
+        <input type="date" required asp-for="DataVenda" class="form-control" id="" placeholder="Digite a data da realização da venda">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Confirmar Alterações</button>
+    <a class="btn btn-secondary" role="button" asp-controller="Venda" asp-action="Venda">Voltar</a>
+
+</form>

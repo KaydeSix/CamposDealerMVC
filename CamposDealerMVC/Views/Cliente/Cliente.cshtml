@@ -1,0 +1,76 @@
+﻿@model List<ClienteModel>
+@{
+    ViewData["Title"] = "Listagem de Clientes";
+}
+<div class="text-center">
+    <h1>Listagem de Clientes</h1>
+
+    @*<div>
+        <h2>Pesquise por um cliente específico</h2>
+        <div>
+            <input type="text" class="form-control" id="inputPesquisarNome" placeholder="Digite o nome">
+            <button type="submit" class="btn btn-primary" onclick="BtnPesquisarUsuario()">Pesquisar</button>
+        </div>
+    </div>*@
+
+    <table class="table">
+        <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Email</th>
+              <th scope="col">Cidade</th>
+              <th scope="col">Acao</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if(Model != null && Model.Any()){
+                foreach (ClienteModel cliente in Model)
+                {
+                    <tr>
+                      <th scope="row">@cliente.IdCliente</th>
+                      <td>@cliente.Nome</td>
+                      <td>@cliente.Email</td>
+                      <td>@cliente.Cidade</td>
+                      <td>
+                          <div class="btn-group" role="group">
+                                <a role="button" class="btn btn-primary" asp-route-id="@cliente.IdCliente" asp-controller="Cliente" asp-action="EditarCliente">Editar</a>
+                                <a role="button" class="btn btn-danger" asp-route-id="@cliente.IdCliente" asp-controller="Cliente" asp-action="DeletarCliente">Remover</a>
+                          </div>
+                      </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+    <div>
+        <a class="btn btn-success" role="button" asp-controller="Cliente" asp-action="CriarCliente">Adicionar novo Cliente</a>
+    </div>
+</div>
+</html>
+
+@*<script>
+
+function BtnPesquisarUsuario() {
+    let nomeCliente = $("#inputPesquisarNome").val();
+
+    if(nomeCliente.length > 1){
+        $.ajax({
+        url: '@Url.Action("PesquisaClientePeloNome", "Cliente")',
+        type: "GET",
+        contentType: "application/json",
+        data: $("#inputPesquisarNome").val(),
+        success: function(response) {
+            console.log("Requisição bem-sucedida:", response);
+        },
+        error: function(xhr, status, error) {
+            console.error("Erro na requisição:", error);
+        }
+    });
+    }else{
+        alert("Para pesquisar por um cliente digite pelo menos 1 digito.")
+    }
+};
+    
+</script>*@
